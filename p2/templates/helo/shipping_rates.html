@@ -1,0 +1,14 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | Shipping Rates {% endblock %}
+{% block body %} 
+
+<div class="main">
+    <h1 style="margin-top: 2%; margin-bottom: 2%; font-family: Kristen ITC; color: blue; margin-left: 2%;">Shipping Rates for all the products are listed below: </h1>
+    <ul style="font-family: Kristen ITC; font-size: 250%; margin-left: 2%; margin-bottom: 2%;">
+        <li>Shipping charges on all products <font color="red">below ₹ 6,000</font> is <font color="red">₹100</font></li>
+        <li>Shipping charges on all products <font color="red">between ₹ 6,000 to ₹ 20,000</font> is <font color="red">₹50</font></li>
+        <li>Shipping charges on all products <font color="red">above ₹ 20,000</font> is <font color="red">₹0</font></li>
+        </ul>
+    </div>
+
+{% endblock %}

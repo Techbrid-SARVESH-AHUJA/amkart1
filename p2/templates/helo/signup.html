@@ -1,0 +1,50 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | Signup {% endblock %}
+{% block body %} 
+
+<div class="main" style="margin-top: 2%; margin-bottom: 2%; text-align: center;">
+    <label style="font-family: Kristen ITC; font-size: 170%; margin-bottom: 5%;">Sign up to AMKART</label>
+<form method="POST">
+  {% csrf_token %}
+  {{form.errors}}
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label" style="font-family: Kristen ITC; font-size: 170%;">Username 👇</label>
+      <br>
+      {{form.username}}
+      <!--<input type="text" name="username" maxlength="200" required="" id="id_username" style="font-family: Kristen ITC; font-size: 170%; text-align: center;">-->
+      <!--<input type="text" class="form-control" id="exampleInputName"  style="font-family: Kristen ITC; font-size: 170%; text-align: center;" value="" required>-->
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">E-Mail 👇</label>
+      <br>
+      {{form.email}}
+      <!--<input type="password" name="password" maxlength="200" required="" id="id_password" style="font-family: Kristen ITC; font-size: 170%; text-align: center;">-->
+      <!--<input type="password" class="form-control" id="exampleInputPassword1" style="font-family: Kristen ITC; font-size: 170%; text-align: center;" value="" required>-->
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">Password 1 👇</label>
+        <br>
+        {{form.password1}}
+        <!--<input type="email" name="e_mail" maxlength="200" required="" id="id_e_mail" style="font-family: Kristen ITC; font-size: 170%; text-align: center;">-->
+        <!--<input type="email" class="form-control" id="exampleInputEmail" style="font-family: Kristen ITC; font-size: 170%; text-align: center;" value="" required>-->
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputNumber" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">Password 2 👇</label>
+          <br>
+          {{form.password2}}
+          <!--<input type="tel" pattern="[0-9]{10}" name="phone_number" maxlength="200" required="" id="id_phone_number" style="font-family: Kristen ITC; font-size: 170%; text-align: center;">-->
+        <!--<input type="tel" class="form-control" id="exampleInputNumber" pattern="[0-9]{10}" style="font-family: Kristen ITC; font-size: 170%; text-align: center;" value="" required>-->
+    </div>
+    
+    <input type="submit" class="btn btn-info" value="Sign Up" style="margin-top: 5%; width: 100%; font-family: Kristen ITC; font-size: 170%; margin-bottom: 15%;">
+  </form>
+  <label style="font-family: Kristen ITC; font-size: 150%; margin-bottom: 5%;">Already have an AMKART account?</label>
+<a href="{% url 'login' %}"><button type="submit" class="btn btn-info" style="width: 100%; font-family: Kristen ITC; font-size: 170%;">Login to AMKART</button></a>
+</div>
+
+
+
+
+
+
+{% endblock %}

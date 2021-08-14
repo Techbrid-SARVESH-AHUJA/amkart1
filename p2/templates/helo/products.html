@@ -1,0 +1,159 @@
+{% extends "helo/basic.html" %}
+{% load static %}
+{% block title %} {{a.name}} | Products {% endblock %}
+{% block body %} 
+
+
+
+<div class="categories" style="margin-top: 0.7%; margin-bottom: 1%; font-family: Kristen ITC;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 100%;">
+        <li class="nav-item" style="width: 20%;">
+          <a class="nav-link active" style="font-size: 150%;">CATEGORIES</a>
+        </li>
+        <li class="nav-item" style="width: 12%;">
+          <a class="nav-link active" href="{% url 'products' %}#mobile_phones" style="font-size: 125%;">Moblie Phones</a>
+        </li>
+        <li class="nav-item" style="width: 12%;">
+          <a class="nav-link active" href="{% url 'products' %}#lego_models" style="font-size: 125%;">Lego Models</a>
+        </li>
+        <li class="nav-item" style="width: 12%;">
+          <a class="nav-link active" href="{% url 'products' %}#bedsheets" style="font-size: 125%;">Bedsheets</a>
+        </li>
+        <li class="nav-item" style="width: 12%;">
+          <a class="nav-link active" href="{% url 'products' %}#clocks" style="font-size: 125%;">Clocks</a>
+        </li>
+    </div>
+  </div>
+</nav>
+</div>
+
+<br>
+<hr>
+<!---->
+
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+  <div id="mobile_phones"></div>
+    <h1 style="text-align: center; font-family: biome; color: blue ;">MOBILE PHONES</h1>
+<div class="card-group">
+  {% for a in Mobiles %}
+    <div class="card">
+
+      <a href="{% url 'mobile_phones' a.id %}">
+      
+      <img src="/media/{{a.image}}" class="card-img-top" alt="product image" style="height: {{a.h}}px; width: {{a.w}}px; margin-left: {{a.m}}%;">
+      </a>
+    <div class="card-body">
+      <h5 class="card-title" style="text-align: center; font-size: 200%;">{{a.name}}</h5>
+        <h5 class="card-title" style="text-align: center; font-size: 200%; color: red;">₹ {{a.price}}</h5>
+        <p class="card-text" style="text-align: center;"><font color="red">Operations System:</font> {{a.os}} | <font color="red">RAM:</font> {{a.ram}} | <font color="red">Storage:</font> {{a.storage}} | <font color="red">Display:</font> {{a.display}} | <font color="red">Battery:</font> {{a.battery}}</p>
+        <hr>
+        <p class="card-text"><font color="red">Colors:</font> {{a.color_1}} | {{a.color_2}} | {{a.color_3}}</p>
+        <hr>
+        <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+        <a href="{% url 'mobile_phones' a.id %}"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">View Product</font></button></a>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+
+<!---->
+<br>
+<hr>
+
+
+
+<!---->
+
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+    <div id="lego_models"></div>
+      <h1 style="text-align: center; font-family: biome; color: blue ;">LEGO MODELS</h1>
+  
+  
+  <div class="card-group">
+    {% for b in Legos %}
+      <div class="card">
+        <a href="{% url 'lego_models' b.id %}">
+        <img src="/media/{{b.image}}" class="card-img-top" alt="product image" style="margin-top: {{b.top}}%; margin-bottom: {{b.bottom}}%;">
+        </a>
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center; font-size: 200%;">{{b.name}}</h5>
+          <h5 class="card-title" style="text-align: center; font-size: 200%; color: red;">₹ {{b.price}}</h5>
+          <p class="card-text" style="text-align: center;"><font color="red">Lego Section:</font> {{b.section}} | <font color="red">Age:</font> {{b.age}} | <font color="red">Model No.:</font> {{b.model_no}} | <font color="red">Pieces:</font> {{b.pieces}} | <font color="red">Model Dimensions:</font> {{b.dimensions}}</p>
+          <hr>
+          <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+          <a href="{% url 'lego_models' b.id %}"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">View Product</font></button></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      </div>
+
+<!---->
+<br>
+<hr>
+
+
+
+<!---->
+
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+  <div id="bedsheets"></div>
+  <h1 style="text-align: center; font-family: biome; color: blue ;">BEDSHEETS</h1>
+<div class="card-group">
+{% for c in Bedsheets %}
+  <div class="card">
+    <a href="{% url 'bedsheets' c.id %}">
+    <img src="/media/{{c.image}}" class="card-img-top" alt="product image" style="{{c.style}}">
+    </a>
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center; font-size: 200%;">{{c.name}}</h5>
+      <h5 class="card-title" style="text-align: center; font-size: 200%; color: red;">₹ {{c.price}}</h5>
+      <p class="card-text" style="margin-bottom: 19px; text-align: center;"><font color="red">Bedsheet Size:</font> {{c.size}} | <font color="red">Material:</font> {{c.material}} | <font color="red">Type:</font> {{c.type}} | <font color="red">Pattern:</font> {{c.pattern}} | <font color="red">Wash Care:</font> {{c.wash_care}} | <font color="red">Color:</font> {{c.color}}</p>
+      <hr>
+      <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+      <a href="{% url 'bedsheets' c.id %}"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">View Product</font></button></a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
+
+<br>
+<hr>
+
+
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+  <div id="clocks"></div>
+  <h1 style="text-align: center; font-family: biome; color: blue ;">CLOCKS</h1>
+<div class="card-group">
+
+{% for d in Clocks %}
+  <div class="card">
+    <a href="{% url 'clocks' d.id %}">
+    <img src="/media/{{d.image}}" class="card-img-top" alt="product image" style="{{d.style}}">
+    </a>
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center; font-size: 200%;">{{d.name}}</h5>
+      <h5 class="card-title" style="text-align: center; font-size: 200%; color: red; margin-top: {{d.mt}}%;">₹ {{d.price}}</h5>
+      <p class="card-text" style="margin-bottom: 19px; text-align: center;"><font color="red">Size:</font> {{d.size}} | <font color="red">Type:</font> {{d.type}} | <font color="red">Mechanism:</font> {{d.mechanism}} | <font color="red">Company:</font> {{d.company}} | <font color="red">Design:</font> {{d.design}}</p>
+      <hr>
+      <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+      <a href="{% url 'clocks' d.id %}"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">View Product</font></button></a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
+<br>
+<hr>
+
+
+
+
+{% endblock %}

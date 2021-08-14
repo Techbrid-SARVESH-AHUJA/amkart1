@@ -1,0 +1,65 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | Contact Us {% endblock %}
+{% block body %} 
+
+<script>
+  function submitted_alert() {
+    alert("Your form has been submitted. Thanks for cantacting us. We will contact you as soon as possible")
+  }
+</script>
+
+
+
+<div class="row" style="margin-top: 2%; margin-bottom: 2%; font-family: Kristen ITC;">
+  <div class="col-sm-6">
+    <div class="card border border-primary" style="font-size: 20px;">
+
+      <table>
+        <tr>
+        <td>
+        
+          <div class="form">
+            <form method="POST" onsubmit="return submitted_alert()">
+              {% csrf_token %}
+                <div class="mb-3 mt-4">
+                  <input type="text" name="name" maxlength="200" required="" id="id_name" style="width: 97%;" placeholder="NAME:">
+                  <br><br>
+                  <input type="email" name="e_mail" maxlength="200" required="" id="id_e_mail" style="width: 97%;" placeholder="E-MAIL:">
+                  <br><br>
+                  <textarea name="message" maxlength="500" required="" id="id_message" style="width: 97%; height: 150px;" placeholder="MESSAGE:"></textarea>
+                  <br><br>
+                  <input type="submit" class="btn btn-primary" style="font-size: 30px; width: 97%;" value="Submit">
+                </div>
+
+              </form>
+            </div>
+        
+        </td>
+        </tr>
+        </table>
+        
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card border border-primary">
+      <table style="margin-bottom: 5.7%; margin-top: 5.7%;">
+        <tr>
+        <td>
+        <label style="font-size: 25px; font-family:arial black">Head office:<br>Plot 32, Sector-B8, Indirapuram, Ghaziabad, 201014</label>
+        <br><br><br><br>
+        <label style="font-size: 25px; font-family:arial black">Contact us on: </label>
+        <br><br>
+        <img src="/media/static/call_icon.png" height=50 width=50>
+        <label style="font-size: 25px;font-family:arial black"> : <a href="tel:989900XXXX"><font color="black">989900XXXX</font></a></label>
+        <br><br>
+        <img src="/media/static/mail_icon.png" height=50 width=70>
+        <label style="font-size: 25px; font-family:arial black"> : <a href="mailto:service@amkart.com"><font color="black">service@amkart.com</font></a></label>
+        </td>
+        </tr>
+        </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

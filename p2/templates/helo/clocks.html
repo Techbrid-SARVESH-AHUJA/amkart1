@@ -1,0 +1,56 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | {{Product.name}} {% endblock %}
+{% block body %} 
+
+
+
+
+<p style="font-size: 300%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Product.name}}</p>
+<hr>
+<p style="font-size: 200%; font-family: Kristen ITC; color: black; margin-left: 7%; text-align: center;">Price: ₹ {{Product.price}}</p>
+<hr><br>
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card" style="margin-top: 2%; margin-bottom: 2%;">
+        
+        <table style="margin-top: 3%; margin-bottom: 3%;">
+          <tr>
+            <td>
+            <img src="/media/{{Product.image}}" style="width: 67%; margin-left: 15%;">
+          </td>
+          </tr>
+      </table>
+
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card"  style="margin-top: 2%; margin-bottom: 2%;">
+        
+        <table  style="margin-top: 3%; margin-bottom: 3%;">
+          <tr>
+            <td style="width: 50%;">
+              <div class="specs" style="font-size: large;">
+                <p style="font-size: 150%; font-family: Kristen ITC; color: black;">About this clock:</p>
+              <ul>
+                <li>{{Product.spec_1}}</li>
+                <li>{{Product.spec_2}}</li>
+                <li>{{Product.spec_3}}</li>
+              </ul>
+              </div>
+              <br>
+              <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+              <a href="#"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">Buy Now</font></button></a>
+            </td>
+          </tr>
+          </table>
+
+      </div>
+    </div>
+  </div>
+
+
+  <br><br>
+
+{% endblock %}

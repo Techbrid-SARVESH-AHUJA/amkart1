@@ -1,0 +1,231 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    {% for a in Details %}
+    <title>{% block title %} {{a.name}} {% endblock %}</title>
+    <link rel="shortcut icon" href="/media/{{a.logo}}">
+    {% endfor %}
+  </head>
+  <body onload="ma()">
+    <style>
+      .footer{background-color: aqua;}
+    </style>
+    
+    <script>
+      function ma(){
+      var x = document.getElementById("usern").innerHTML
+      if (x == ""){
+        document.getElementById("logn").hidden = false
+        document.getElementById("logt").hidden = true
+        document.getElementById("wel").hidden = true
+      }
+      else{
+        document.getElementById("logt").hidden = false
+        document.getElementById("logn").hidden = true
+        document.getElementById("wel").hidden = false
+      }
+      }
+    </script>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2" style="font-family: Kristen ITC;">
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            {% for a in Details %}
+            <img src="/media/{{a.logo}}" alt="logo" width="45" height="54" class="d-inline-block align-text-center">
+            {{a.name}}
+            {% endfor %}
+          </a>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'contact' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'blog' %}">Blogs</a>
+            </li>
+          </ul>
+          
+          <form class="d-flex" style="margin-right: 4%;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+
+
+          <nav class="navbar navbar-light">
+            <div class="container">
+              <a class="navbar-brand" href="{% url 'cart' %}">
+                <img src="/media/static/cart_icon.png" alt="cart" width="70" height="60">
+                CART
+              </a>
+            </div>
+          </nav>
+
+
+          <nav class="navbar navbar-light">
+            <div class="container">
+              <p1 style="color: white; font-size: 150%; font-family: Kristen ITC;" id="wel">Welcome</p1>
+              <pre> </pre>
+          <p1 style="color: white; font-size: 150%; font-family: Kristen ITC;" id="usern">{{user.username}}</p1>
+            </div>
+          </nav>
+
+
+          <label style="color: white; font-size: 150%; margin-bottom: 0.2cm; margin-left: 2%; margin-right: 2%;" id="logn"><a href="{% url 'login' %}"><font color="white">Log In</font></a></label>
+
+          <label style="color: white; font-size: 150%; margin-bottom: 0.2cm; margin-left: 2%; margin-right: 2%;" id="logt"><a href="/logout"><font color="white">Log Out</font></a></label>
+          
+        </div>
+      </div>
+    </nav>
+
+
+    {% block body %} {% endblock %}
+    
+<div class="footer" style="margin-bottom: 0.7%;">
+    <!-- Footer -->
+<footer class="page-footer font-small mdb-color pt-4">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Footer links -->
+    <div class="row text-center text-md-left mt-3 pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size: 50px; font-family: Kristen ITC;">AMKART</h6>
+        <p>AMKART is the best online shopping website in India, We give all varieties of products with best quality</p>
+      </div>
+      <!-- Grid column -->
+
+
+      <!-- Grid column -->
+      
+      <!--hr class="w-100 clearfix d-md-none"-->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" style="width: 30%;">
+        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size: 30px; font-family: Kristen ITC;">Useful sections</h6>
+        <p>
+          <a href="#">Your Account</a>
+        </p>
+        <p>
+          <a href="{% url 'cart' %}">Your Cart</a>
+        </p>
+        <p>
+          <a href="{% url 'shipping_rates' %}">Shipping Rates</a>
+        </p>
+        <p>
+          <a href="{% url 'contact' %}">Contact Us</a>
+        </p>
+      </div>
+
+      <!-- Grid column -->
+      <hr class="w-100 clearfix d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size: 30px; font-family: Kristen ITC;">Contact</h6>
+        <p>
+          <i class="fas fa-home mr-3"></i>Plot 32, Sector-B8, Indirapuram, Ghaziabad, 201014</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i><a href="mailto:service@amkart.com"><font color="black">service@amkart.com</font></a></p>
+        <p>
+          <i class="fas fa-phone mr-3"></i><a href="tel:989900XXXX"><font color="black">+91 989900XXXX</font></a></p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Footer links -->
+
+    <hr>
+
+    <!-- Grid row -->
+    <div class="row d-flex align-items-center">
+
+      <!-- Grid column -->
+      <div class="col-md-7 col-lg-8">
+
+        <!--Copyright-->
+       
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-5 col-lg-4 ml-lg-0">
+
+        <!-- Social buttons -->
+        <div class="text-center text-md-right">
+          <ul class="list-unstyled list-inline">
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+</footer>
+<!-- Footer -->
+</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+    
+  </body>
+</html>
+
+
+

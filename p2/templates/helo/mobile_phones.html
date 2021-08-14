@@ -1,0 +1,74 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | {{Product.name}} {% endblock %}
+{% block body %} 
+
+
+<script>
+  function switch_to_1(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.getElementById("model").src="{{Product.model_embed_1}}"
+    document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_1}})"
+  }
+  function switch_to_2(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.getElementById("model").src="{{Product.model_embed_2}}"
+    document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_2}})"
+  }
+  function switch_to_3(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.getElementById("model").src="{{Product.model_embed_3}}"
+    document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_3}})"
+  }
+</script>
+
+<p id="name" style="font-size: 300%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Product.name}} ({{Product.color_3}})</p>
+<hr>
+<p style="font-size: 200%; font-family: Kristen ITC; color: black; margin-left: 7%; text-align: center;">Price: ₹ {{Product.price}}</p>
+<hr><br>
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+
+        <table>
+          <p style="font-size: 250%; font-family: Kristen ITC; color: blue; margin-left: 7%; margin-top: 3%;">Drag to rotate this 360° model</p>
+          <iframe id="model" height="480" src="{{Product.model_embed_3}}" frameborder="0"></iframe>
+      </table>
+
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        
+        <table style="margin-top: 3%; margin-bottom: 3%;">
+          <tr>
+          <td>
+            <div class="specs" style="font-size: large;">
+              <p style="font-size: 150%; font-family: Kristen ITC; color: black;">Specifications:</p>
+            <ul>
+              <li>{{Product.spec_1}}</li>
+              <li>{{Product.spec_2}}</li>
+              <li>{{Product.spec_3}}</li>
+              <li>{{Product.spec_4}}</li>
+              <li>{{Product.spec_5}}</li>
+            </ul>
+            </div>
+            <p style="font-size: 150%; font-family: Kristen ITC; color: black;"><font color="red">Color Options: </font> <button onclick="switch_to_1()" style="background-color: lightblue;"><font color="black">{{Product.color_1}}</font></button> | <button onclick="switch_to_2()" style="background-color: lightblue;"><font color="black">{{Product.color_2}}</font></button> | <button onclick="switch_to_3()" style="background-color: lightblue;"><font color="black">{{Product.color_3}}</font></button> </p>
+              <br>
+            <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+            <a href="#"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">Buy Now</font></button></a>
+          </td>
+        </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  
+  <br><br>
+
+{% endblock %}
